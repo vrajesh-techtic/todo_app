@@ -1,49 +1,36 @@
-import React, { useState } from "react";
-import TodoContainer from "./TodoContainer";
+import React from "react";
+import { Button, Form, Input, message } from "antd";
+import "../css/task-container.css";
+import FormContainer from "./FormContainer";
 
-const TaskContainer = () => {
-  let [oldTitle, setTitle] = useState("");
-  let [oldDesc, setDesc] = useState("");
-
-  return (
-    <div className="container-fluid addTaskContainer">
-      <div className="mb-3">
-        <h1 className="text-center mb-4">Task Details</h1>
-        <hr />
-        <label className="form-label">Title of task:</label>
-        <input
-          type="text"
-          className="form-control"
-          id="taskTitle"
-          placeholder="Calculator app, SCRUM meeting, L&D, etc."
-          defaultValue={oldTitle}
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />
-      </div>
-
-      <div className="mb-3">
-        <label className="form-label">Description of the task:</label>
-        <textarea
-          className="form-control"
-          id="taskDetail"
-          rows="3"
-          placeholder="- To add history feature in Calculator app."
-          onChange={(e) => {
-            setDesc(e.target.value);
-          }}
-        ></textarea>
-      </div>
-
-      <button
-        className="btn btn-primary"
-        onClick={() => TodoContainer([oldTitle, oldDesc])}
-      >
-        Add task
-      </button>
-    </div>
-  );
+const layout = {
+  labelCol: {
+    span: 6,
+  },
+  wrapperCol: {
+    span: 16,
+  },
 };
 
+const TaskContainer = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const success = (e) => {
+    localStorage.setItem(e.user.title, e.user.description);
+
+    messageApi.open({
+      type: "success",
+      content: "Task added successfully!",
+    });
+  };
+  return (
+    <>
+      {contextHolder}
+      <div className="task-container">
+        <h1 className="text-center mb-4">Add New Task</h1>
+
+        <FormContainer layout={layout} success={success} btnText="Add Task" />
+      </div>
+    </>
+  );
+};
 export default TaskContainer;

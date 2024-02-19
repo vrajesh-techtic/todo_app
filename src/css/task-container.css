@@ -1,0 +1,21 @@
+.task-container{
+    display: flex;
+    border: solid 2px black;
+    width: 50%;
+    padding: 40px 0px;
+    justify-content: center;
+    margin: 10px auto;
+    flex-direction: column;
+}
+
+.task-form{
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+}
+
+.submitBtn{
+width: fit-content;
+margin: 0px auto;
+}
