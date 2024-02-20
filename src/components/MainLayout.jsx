@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  DeleteOutlined,
   PlusCircleOutlined,
   DesktopOutlined,
-  EditOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import "../css/main-layout.css";
